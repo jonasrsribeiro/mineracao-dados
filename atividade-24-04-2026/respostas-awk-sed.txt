@@ -1,0 +1,44 @@
+1) AWK - usar OFS="," para imprimir o IP (col 1) e o status HTTP (col 9) separados por virgula
+awk 'BEGIN{OFS=","} {print $1, $9}' acessos.log
+
+2) SED - excluir a primeira linha do arquivo
+sed '1d' acessos.log
+
+3) AWK - ignorar primeira linha pelo numero da linha e imprimir onde bytes (col 10) sejam maiores que 1000
+awk 'NR>1 && $10 > 1000 {print $0}' acessos.log
+
+4) SED - substituir todas as ocorrencias de GET por CONSULTA
+sed 's/GET/CONSULTA/g' acessos.log
+
+5) AWK - filtrar registros com status 200 (OK) e contar quantos existem
+awk '$9 == 200 {count++} END {print "Requisicoes com status 200:", count}' acessos.log
+
+6) SED - remover todas as linhas que contenham status de erro (4xx e 5xx)
+sed '/\" 4[0-9][0-9]\|\" 5[0-9][0-9]/d' acessos.log
+
+7) AWK - calcular a media de bytes transferidos (col 10), desconsiderando a primeira linha
+awk 'NR>1 {soma += $10; n++} END {print "Media de bytes:", soma/n}' acessos.log
+
+8) SED - substituir as barras (/) das datas (col 4) por hifens (-)
+sed 's|\[23/Apr/2026|\[23-Apr-2026|g' acessos.log
+
+9) AWK - array associativo para contar quantas requisicoes cada IP (col 1) realizou
+awk '{count[$1]++} END {for (ip in count) print ip, count[ip]}' acessos.log
+
+10) SED - substituir o status 403 por BLOQUEADO, imprimindo apenas as linhas alteradas
+sed -n 's/ 403 / BLOQUEADO /gp' acessos.log
+
+11) PIPELINE - sed remove as aspas duplas, e o awk imprime o IP (col 1) e o metodo (col 2 apos remocao das aspas)
+sed 's/"//g' acessos.log | awk '{print $1, $6}'
+
+12) AWK - encontrar o maior volume de bytes transferidos (col 10) e imprimir ao final
+awk 'NR>1 {if ($10 > max) max = $10} END {print "Maior transferencia em bytes:", max}' acessos.log
+
+13) SED - adicionar a string [INSPECIONADO] no final de todas as linhas do IP 192.168.1.10
+sed '/192\.168\.1\.10/s/$/ [INSPECIONADO]/' acessos.log
+
+14) AWK - printf para exibir o recurso (col 7) alinhado a esquerda com 30 caracteres, seguido do status (col 9)
+awk '{printf "%-30s %s\n", $7, $9}' acessos.log
+
+15) PIPELINE - filtrar as requisicoes ao /catalogo.html e somar o total de bytes (col 10)
+grep '/catalogo\.html' acessos.log | awk '{soma += $10} END {print "Total de bytes do catalogo:", soma}'
