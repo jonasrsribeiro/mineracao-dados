@@ -1,13 +1,7 @@
-"""
-Baixa reviews em portugues direto da API publica da Steam e salva como CSV.
-Nao precisa de autenticacao nem web scraping.
-"""
-
 import requests
 import pandas as pd
 import time
 
-# Counter-Strike 2 (730) - jogo com muitos reviews em portugues
 APP_ID = 730
 TOTAL_REVIEWS = 500
 SAIDA_CSV = "reviews_steam_ptbr.csv"

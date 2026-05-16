@@ -1,8 +1,3 @@
-"""
-Exercicio 1 - Exemplo Didatico: Analise de Sentimentos com LeIA
-Testa frases em portugues: positiva, negativa, negacao e sarcasmo.
-"""
-
 from LeIA import SentimentIntensityAnalyzer
 
 analisador = SentimentIntensityAnalyzer()
@@ -33,19 +28,16 @@ def exibir_resultado(rotulo, frase):
 print("\n>>> ANALISE DIDATICA DE SENTIMENTOS <<<")
 print("Biblioteca: LeIA (versao portuguesa do VADER)\n")
 
-# --- 1. Frase positiva ---
 exibir_resultado(
     "POSITIVA",
     "gostei muito do jogo, excelente e maravilhoso!"
 )
 
-# --- 2. Frase negativa ---
 exibir_resultado(
     "NEGATIVA",
     "Jogo horrivel e ruim, cheio de bugs e erros."
 )
 
-# --- 3. Desafio da negacao: mostrar o efeito do "nao" como par comparativo ---
 frase_base   = "O jogo e excelente, gostei muito."
 frase_negada = "O jogo nao e excelente, nao gostei muito nao."
 
@@ -64,7 +56,6 @@ print("  >>> O 'nao' reduziu o score positivo,")
 print("      mostrando que o algoritmo reconhece o modificador.")
 print(f"{'='*60}")
 
-# --- 4. Teste de estresse: sarcasmo ---
 exibir_resultado(
     "SARCASMO - Teste de Estresse",
     "Que otimo jogo! So trava e perde meu progresso. Perfeito."

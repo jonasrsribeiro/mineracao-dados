@@ -1,8 +1,3 @@
-"""
-Exercicio 2 - Exemplo Real: Analise de Sentimentos em Reviews da Steam
-Aplica LeIA em 500 reviews em portugues coletados via API publica da Steam.
-"""
-
 import pandas as pd
 from LeIA import SentimentIntensityAnalyzer
 from langdetect import detect, LangDetectException
