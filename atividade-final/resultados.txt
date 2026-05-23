@@ -80,44 +80,44 @@ RELATÓRIO DE CLASSIFICAÇÃO
 ======================================================================
               precision    recall  f1-score   support
 
-    Fica (0)       0.88      0.79      0.83      1294
-     Sai (1)       0.55      0.71      0.62       467
+    Fica (0)       0.87      0.81      0.84      1294
+     Sai (1)       0.56      0.67      0.61       467
 
     accuracy                           0.77      1761
-   macro avg       0.72      0.75      0.73      1761
+   macro avg       0.72      0.74      0.72      1761
 weighted avg       0.79      0.77      0.78      1761
 
 ======================================================================
 MATRIZ DE CONFUSÃO
 ======================================================================
-  VP (True Positivos — Sai detectado)  : 331
-  VN (True Negativos — Fica detectado) : 1023
-  FP (Alarme Falso)                    : 271
-  FN (Deixou Passar — churn perdido)   : 136
+  VP (True Positivos — Sai detectado)  : 312
+  VN (True Negativos — Fica detectado) : 1048
+  FP (Alarme Falso)                    : 246
+  FN (Deixou Passar — churn perdido)   : 155
 
 ======================================================================
 ROC-AUC
 ======================================================================
-  0.8377
+  0.8337
 
 ======================================================================
 TOP 15 FEATURES — IMPORTÂNCIA (Gini)
 ======================================================================
-  tenure                                        0.1042
-  Contract_Month-to-month                       0.1016
-  TotalCharges                                  0.0957
+  tenure                                        0.1052
+  TotalCharges                                  0.0870
+  MonthlyCharges                                0.0794
   ChargesPerMonth                               0.0788
-  MonthlyCharges                                0.0719
-  HasNoProtection                               0.0572
-  InternetService_Fiber optic                   0.0444
-  Contract_Two year                             0.0378
-  OnlineSecurity_No                             0.0377
-  TechSupport_No                                0.0366
-  PaymentMethod_Electronic check                0.0257
-  IsNewCustomer                                 0.0208
-  NumOnlineServices                             0.0196
-  NumTotalServices                              0.0160
-  Contract_One year                             0.0158
+  Contract_Month-to-month                       0.0777
+  Contract_Two year                             0.0428
+  HasNoProtection                               0.0402
+  OnlineSecurity_No                             0.0293
+  TechSupport_No                                0.0284
+  InternetService_Fiber optic                   0.0273
+  NumOnlineServices                             0.0261
+  Contract_One year                             0.0237
+  NumTotalServices                              0.0230
+  PaymentMethod_Electronic check                0.0206
+  Dependents                                    0.0186
 
 ======================================================================
 HIPERPARÂMETROS DO MODELO
@@ -126,16 +126,16 @@ HIPERPARÂMETROS DO MODELO
   ccp_alpha: 0.0
   class_weight: balanced
   criterion: gini
-  max_depth: 12
-  max_features: sqrt
+  max_depth: None
+  max_features: log2
   max_leaf_nodes: None
   max_samples: None
   min_impurity_decrease: 0.0
-  min_samples_leaf: 4
-  min_samples_split: 10
+  min_samples_leaf: 2
+  min_samples_split: 5
   min_weight_fraction_leaf: 0.0
   monotonic_cst: None
-  n_estimators: 300
+  n_estimators: 200
   n_jobs: -1
   oob_score: False
   random_state: 42
