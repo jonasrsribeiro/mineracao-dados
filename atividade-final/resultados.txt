@@ -1,0 +1,143 @@
+======================================================================
+DATASET — SHAPE E TIPOS
+======================================================================
+<class 'pandas.DataFrame'>
+RangeIndex: 7043 entries, 0 to 7042
+Data columns (total 27 columns):
+ #   Column                Non-Null Count  Dtype  
+---  ------                --------------  -----  
+ 0   customerID            7043 non-null   str    
+ 1   gender                7043 non-null   str    
+ 2   SeniorCitizen         7043 non-null   int64  
+ 3   Partner               7043 non-null   str    
+ 4   Dependents            7043 non-null   str    
+ 5   tenure                7043 non-null   int64  
+ 6   PhoneService          7043 non-null   str    
+ 7   MultipleLines         7043 non-null   str    
+ 8   InternetService       7043 non-null   str    
+ 9   OnlineSecurity        7043 non-null   str    
+ 10  OnlineBackup          7043 non-null   str    
+ 11  DeviceProtection      7043 non-null   str    
+ 12  TechSupport           7043 non-null   str    
+ 13  StreamingTV           7043 non-null   str    
+ 14  StreamingMovies       7043 non-null   str    
+ 15  Contract              7043 non-null   str    
+ 16  PaperlessBilling      7043 non-null   str    
+ 17  PaymentMethod         7043 non-null   str    
+ 18  MonthlyCharges        7043 non-null   float64
+ 19  TotalCharges          7043 non-null   float64
+ 20  Churn                 7043 non-null   str    
+ 21  ChargesPerMonth       7043 non-null   float64
+ 22  NumStreamingServices  7043 non-null   int64  
+ 23  NumOnlineServices     7043 non-null   int64  
+ 24  NumTotalServices      7043 non-null   int64  
+ 25  IsNewCustomer         7043 non-null   int64  
+ 26  HasNoProtection       7043 non-null   int64  
+dtypes: float64(3), int64(7), str(17)
+memory usage: 1.5 MB
+
+======================================================================
+ESTATÍSTICAS DESCRITIVAS (numéricas)
+======================================================================
+            tenure  MonthlyCharges  TotalCharges  ChargesPerMonth  NumStreamingServices  NumOnlineServices  NumTotalServices
+count  7043.000000     7043.000000   7043.000000      7043.000000           7043.000000        7043.000000       7043.000000
+mean     32.371149       64.761692   2281.916928        59.260890              0.772256           1.265654          2.037910
+std      24.559481       30.090047   2265.270398        30.820348              0.852573           1.286879          1.847682
+min       0.000000       18.250000     18.800000         9.183333              0.000000           0.000000          0.000000
+25%       9.000000       35.500000    402.225000        26.274411              0.000000           0.000000          0.000000
+50%      29.000000       70.350000   1397.475000        61.150000              0.000000           1.000000          2.000000
+75%      55.000000       89.850000   3786.600000        84.940047              2.000000           2.000000          3.000000
+max      72.000000      118.750000   8684.800000       172.938502              2.000000           4.000000          6.000000
+
+======================================================================
+DISTRIBUIÇÃO DO TARGET
+======================================================================
+  No: 5174 (73.5%)
+  Yes: 1869 (26.5%)
+
+======================================================================
+RELATÓRIO DE OUTLIERS (IQR)
+======================================================================
+  tenure: Q1=9.00 Q3=55.00 IQR=46.00 | Limites=[-60.00, 124.00] | Outliers=0
+  MonthlyCharges: Q1=35.50 Q3=89.85 IQR=54.35 | Limites=[-46.02, 171.38] | Outliers=0
+  TotalCharges: Q1=402.23 Q3=3786.60 IQR=3384.38 | Limites=[-4674.34, 8863.16] | Outliers=0
+
+======================================================================
+DIVISÃO TREINO / TESTE
+======================================================================
+  Treino : 5282 amostras (75%)
+  Teste  : 1761 amostras (25%)
+  Features: 46
+
+======================================================================
+DISTRIBUIÇÃO APÓS OVERSAMPLING (treino)
+======================================================================
+  Classe 0: 3880
+  Classe 1: 3880
+
+======================================================================
+RELATÓRIO DE CLASSIFICAÇÃO
+======================================================================
+              precision    recall  f1-score   support
+
+    Fica (0)       0.88      0.79      0.83      1294
+     Sai (1)       0.55      0.71      0.62       467
+
+    accuracy                           0.77      1761
+   macro avg       0.72      0.75      0.73      1761
+weighted avg       0.79      0.77      0.78      1761
+
+======================================================================
+MATRIZ DE CONFUSÃO
+======================================================================
+  VP (True Positivos — Sai detectado)  : 331
+  VN (True Negativos — Fica detectado) : 1023
+  FP (Alarme Falso)                    : 271
+  FN (Deixou Passar — churn perdido)   : 136
+
+======================================================================
+ROC-AUC
+======================================================================
+  0.8377
+
+======================================================================
+TOP 15 FEATURES — IMPORTÂNCIA (Gini)
+======================================================================
+  tenure                                        0.1042
+  Contract_Month-to-month                       0.1016
+  TotalCharges                                  0.0957
+  ChargesPerMonth                               0.0788
+  MonthlyCharges                                0.0719
+  HasNoProtection                               0.0572
+  InternetService_Fiber optic                   0.0444
+  Contract_Two year                             0.0378
+  OnlineSecurity_No                             0.0377
+  TechSupport_No                                0.0366
+  PaymentMethod_Electronic check                0.0257
+  IsNewCustomer                                 0.0208
+  NumOnlineServices                             0.0196
+  NumTotalServices                              0.0160
+  Contract_One year                             0.0158
+
+======================================================================
+HIPERPARÂMETROS DO MODELO
+======================================================================
+  bootstrap: True
+  ccp_alpha: 0.0
+  class_weight: balanced
+  criterion: gini
+  max_depth: 12
+  max_features: sqrt
+  max_leaf_nodes: None
+  max_samples: None
+  min_impurity_decrease: 0.0
+  min_samples_leaf: 4
+  min_samples_split: 10
+  min_weight_fraction_leaf: 0.0
+  monotonic_cst: None
+  n_estimators: 300
+  n_jobs: -1
+  oob_score: False
+  random_state: 42
+  verbose: 0
+  warm_start: False
